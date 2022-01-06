@@ -124,12 +124,14 @@
               "\r",
               "pm.test(\"Validate title inserted content\", function () {\r",
               "    var jsonData = pm.response.json();\r",
-              "    pm.expect(jsonData.title).to.eql(pm.environment.get(\"title\"));\r",
               "});\r",
               "\r",
-              "pm.test(\"Validate body inserted content\", function () {\r",
+              "pm.test(\"Validate new inserted content\", function () {\r",
               "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.title).to.eql(pm.environment.get(\"title\"));\r",
               "    pm.expect(jsonData.body).to.eql(pm.environment.get(\"body\"));\r",
+              "    pm.expect(jsonData.title).to.eql(pm.environment.get(\"id\"));\r",
+              "\r",
               "});\r",
               "\r",
               "pm.test(\"Validate that header Content-Type is present\", function () {\r",
@@ -220,7 +222,7 @@
             }
           }
         },
-        "url": "{{jsonplaceholder}}"
+        "url": "{{baseUrl}}/posts"
       },
       "response": []
     }
