@@ -122,15 +122,12 @@
               "    pm.response.to.have.status(\"Created\");\r",
               "});\r",
               "\r",
-              "pm.test(\"Validate title inserted content\", function () {\r",
-              "    var jsonData = pm.response.json();\r",
-              "});\r",
-              "\r",
               "pm.test(\"Validate new inserted content\", function () {\r",
               "    var jsonData = pm.response.json();\r",
+              "    var idcompare = 101;\r",
               "    pm.expect(jsonData.title).to.eql(pm.environment.get(\"title\"));\r",
               "    pm.expect(jsonData.body).to.eql(pm.environment.get(\"body\"));\r",
-              "    pm.expect(jsonData.title).to.eql(pm.environment.get(\"id\"));\r",
+              "    pm.expect(jsonData.id).to.eql(idcompare);\r",
               "\r",
               "});\r",
               "\r",
@@ -215,7 +212,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"userId\": 11,\r\n    \"title\": \"{{title}}\",\r\n    \"body\": \"{{body}}\"\r\n}",
+          "raw": "{\r\n    \"userId\": 11,\r\n    \"title\": \"{{title}}\",\r\n    \"body\": \"{{body}}\",\r\n    \"id\": \"{{id}}\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
