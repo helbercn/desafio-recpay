@@ -9,23 +9,11 @@
       "name": "TC001",
       "event": [
         {
-          "listen": "prerequest",
-          "script": {
-            "id": "828ab532-db4b-48eb-94d5-fab8416e3f7d",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript"
-          }
-        },
-        {
           "listen": "test",
           "script": {
-            "id": "386c42a8-1fb3-4aa7-8482-b0b2f3b27b0e",
+            "id": "635b773f-db4d-4419-b673-68703d50a0aa",
             "exec": [
-              "pm.test(\"Status code is 200\", function () {\r",
-              "    pm.response.to.have.status(200);\r",
-              "});\r",
+              "\r",
               "\r",
               "pm.test(\"Status code name has string OK\", function () {\r",
               "    pm.response.to.have.status(\"OK\");\r",
@@ -37,7 +25,6 @@
               "    var jsonData = pm.response.json();\r",
               "    pm.expect(pm.response.text()).to.include(titleid96);\r",
               "    pm.expect(pm.response.text()).to.include(bodyid96);\r",
-              "    console.log(bodyid96);\r",
               "});\r",
               "\r",
               "pm.test(\"Validate header Content-Type is present\", function () {\r",
@@ -93,9 +80,19 @@
             ],
             "type": "text/javascript"
           }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "c3ebb5cf-aa53-4407-9f83-9c449efdb90f",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
         }
       ],
-      "_postman_id": "e8fb6d8f-08cd-4189-a669-2ce94f776579",
+      "id": "e8fb6d8f-08cd-4189-a669-2ce94f776579",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
       },
@@ -203,7 +200,7 @@
           }
         }
       ],
-      "_postman_id": "5bd6663b-f798-47c5-94fc-8cdffea388f1",
+      "id": "5bd6663b-f798-47c5-94fc-8cdffea388f1",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
       },
