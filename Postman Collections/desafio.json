@@ -35,7 +35,7 @@
               "\r",
               "pm.test(\"Validate the number of posts with 'userId: 10' is 10\", function(){\r",
               "    var jsonData = pm.response.json();\r",
-              "    pm.expect(jsonData.userId.lenth).to.equal(10);\r",
+              "    pm.expect(Object.keys(jsonData).length).to.eql(100);\r",
               "});\r",
               "\r",
               "pm.test(\"Validate header Content-Type is present\", function () {\r",
