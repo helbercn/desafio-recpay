@@ -6,7 +6,7 @@
   },
   "item": [
     {
-      "name": "TC001",
+      "name": "Create Post",
       "event": [
         {
           "listen": "test",
