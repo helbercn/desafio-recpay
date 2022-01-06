@@ -6,7 +6,7 @@
   },
   "item": [
     {
-      "name": "Get Post",
+      "name": "Get Post Data",
       "event": [
         {
           "listen": "test",
