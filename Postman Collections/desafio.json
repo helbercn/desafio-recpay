@@ -109,25 +109,9 @@
       "name": "TC002",
       "event": [
         {
-          "listen": "prerequest",
-          "script": {
-            "id": "7c8a2599-2ef4-4920-9587-dfd448d0be89",
-            "exec": [
-              "var random1 = Math.random().toString(36).substring(2)\r",
-              "var random2 = Math.random().toString(30).substring(3)\r",
-              "var title = \"Conteudo title \" + random1;\r",
-              "var body = \"Conteudo body \" + random2;\r",
-              "\r",
-              "pm.environment.set(\"title\",title);\r",
-              "pm.environment.set(\"body\",body);"
-            ],
-            "type": "text/javascript"
-          }
-        },
-        {
           "listen": "test",
           "script": {
-            "id": "9389cad1-c82e-42e5-810f-8d017bd3497f",
+            "id": "7fb045e0-0500-4f51-9a08-1117b9e1e1cb",
             "exec": [
               "pm.test(\"Status code is 201\", function () {\r",
               "    pm.response.to.have.status(201);\r",
@@ -146,6 +130,7 @@
               "    var jsonData = pm.response.json();\r",
               "    pm.expect(jsonData.body).to.eql(pm.environment.get(\"body\"));\r",
               "});\r",
+              "\r",
               "pm.test(\"Validate that header Content-Type is present\", function () {\r",
               "    pm.response.to.have.header(\"Content-Type\");\r",
               "});\r",
@@ -193,10 +178,26 @@
               "\t}\r",
               "};\r",
               "\r",
-              "pm.test('Schema is valid', function() {\r",
+              "pm.test('Validate Schema is valid', function() {\r",
               "  pm.response.to.have.jsonSchema(schema);\r",
               "});\r",
               ""
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "00ec676c-bc9c-4ad7-ac3c-55cc5e5af0ec",
+            "exec": [
+              "var random1 = Math.random().toString(36).substring(2)\r",
+              "var random2 = Math.random().toString(30).substring(3)\r",
+              "var title = \"Conteudo title \" + random1;\r",
+              "var body = \"Conteudo body \" + random2;\r",
+              "\r",
+              "pm.environment.set(\"title\",title);\r",
+              "pm.environment.set(\"body\",body);"
             ],
             "type": "text/javascript"
           }
@@ -218,7 +219,7 @@
             }
           }
         },
-        "url": "http://jsonplaceholder.typicode.com/posts"
+        "url": "{{jsonplaceholder}}"
       },
       "response": []
     }
