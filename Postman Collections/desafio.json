@@ -129,6 +129,8 @@
               "    pm.expect(jsonData.body).to.eql(pm.environment.get(\"body\"));\r",
               "    pm.expect(jsonData.id).to.eql(idcompare);\r",
               "\r",
+              "    pm.environment.unset(\"title\");\r",
+              "    pm.environment.unset(\"body\");\r",
               "});\r",
               "\r",
               "pm.test(\"Validate that header Content-Type is present\", function () {\r",
@@ -180,8 +182,7 @@
               "\r",
               "pm.test('Validate Schema is valid', function() {\r",
               "  pm.response.to.have.jsonSchema(schema);\r",
-              "});\r",
-              ""
+              "});"
             ],
             "type": "text/javascript"
           }
@@ -212,7 +213,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"userId\": 11,\r\n    \"title\": \"{{title}}\",\r\n    \"body\": \"{{body}}\",\r\n    \"id\": \"{{id}}\"\r\n}",
+          "raw": "{\r\n    \"userId\": 11,\r\n    \"title\": \"{{title}}\",\r\n    \"body\": \"{{body}}\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
