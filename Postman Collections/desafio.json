@@ -107,7 +107,7 @@
       "response": []
     },
     {
-      "name": "Create Post",
+      "name": "Create Post Data",
       "event": [
         {
           "listen": "test",
