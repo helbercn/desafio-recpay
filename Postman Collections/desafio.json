@@ -107,7 +107,7 @@
       "response": []
     },
     {
-      "name": "TC002",
+      "name": "Create Post",
       "event": [
         {
           "listen": "test",
