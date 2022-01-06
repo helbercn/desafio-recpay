@@ -21,12 +21,13 @@
               "    pm.response.to.have.status(\"OK\");\r",
               "});\r",
               "\r",
-              "pm.test(\"Validate title and body content for id: 96\", function () {\r",
+              "pm.test(\"Validate response content for id: 96\", function () {\r",
               "    var titleid96 = \"quaerat velit veniam amet cupiditate aut numquam ut sequi\"\r",
               "    var bodyid96 = \"in non odio excepturi sint eum\\\\nlabore voluptates vitae quia qui et\\\\ninventore itaque rerum\\\\nveniam non exercitationem delectus aut\"\r",
               "    var jsonData = pm.response.json();\r",
               "    pm.expect(pm.response.text()).to.include(titleid96);\r",
               "    pm.expect(pm.response.text()).to.include(bodyid96);\r",
+              "    \r",
               "});\r",
               "\r",
               "pm.test(\"Validate header Content-Type is present\", function () {\r",
@@ -101,7 +102,7 @@
       "request": {
         "method": "GET",
         "header": [],
-        "url": "{{jsonplaceholder}}"
+        "url": "{{baseUrl}}/posts"
       },
       "response": []
     },
