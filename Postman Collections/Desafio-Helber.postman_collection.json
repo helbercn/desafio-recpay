@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "2c758ff5-cf6d-492b-ac83-ca78173b5d80",
+		"name": "Desafio-Helber",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate response content for id: 96\", function () {\r",
+							"    var userid = '\"userId\": 10'\r",
+							"    var id = '\"id\": 5'\r",
+							"    var titleid = \"quaerat velit veniam amet cupiditate aut numquam ut sequi\"\r",
+							"    var bodyid = \"in non odio excepturi sint eum\\\\nlabore voluptates vitae quia qui et\\\\ninventore itaque rerum\\\\nveniam non exercitationem delectus aut\"\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(pm.response.text()).to.include(userid);\r",
+							"    pm.expect(pm.response.text()).to.include(id);\r",
+							"    pm.expect(pm.response.text()).to.include(titleid);\r",
+							"    pm.expect(pm.response.text()).to.include(bodyid);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate the number of posts with 'userId: 10' is 10\", function(){\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(Object.keys(jsonData).length).to.eql(100);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate header Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"const schema = {\r",
+							"\t\"properties\": {\r",
+							"\t\t\"userId\": {\r",
+							"\t\t\t\"$id\": \"#root/userId\", \r",
+							"\t\t\t\"title\": \"Userid\", \r",
+							"\t\t\t\"type\": \"integer\",\r",
+							"\t\t\t\"examples\": [\r",
+							"\t\t\t\t1\r",
+							"\t\t\t],\r",
+							"\t\t\t\"default\": 0\r",
+							"\t\t},\r",
+							"\t\t\"id\": {\r",
+							"\t\t\t\"$id\": \"#root/id\", \r",
+							"\t\t\t\"title\": \"Id\", \r",
+							"\t\t\t\"type\": \"integer\",\r",
+							"\t\t\t\"examples\": [\r",
+							"\t\t\t\t1\r",
+							"\t\t\t],\r",
+							"\t\t\t\"default\": 0\r",
+							"\t\t},\r",
+							"\t\t\"title\": {\r",
+							"\t\t\t\"$id\": \"#root/title\", \r",
+							"\t\t\t\"title\": \"Title\", \r",
+							"\t\t\t\"type\": \"string\",\r",
+							"\t\t\t\"default\": \"\",\r",
+							"\t\t\t\"examples\": [\r",
+							"\t\t\t\t\"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\"\r",
+							"\t\t\t],\r",
+							"\t\t\t\"pattern\": \"^.*$\"\r",
+							"\t\t},\r",
+							"\t\t\"body\": {\r",
+							"\t\t\t\"$id\": \"#root/body\", \r",
+							"\t\t\t\"title\": \"Body\", \r",
+							"\t\t\t\"type\": \"string\",\r",
+							"\t\t\t\"default\": \"\",\r",
+							"\t\t\t\"examples\": [\r",
+							"\t\t\t\t\"quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\"\r",
+							"\t\t\t],\r",
+							"\t\t\t\"pattern\": \"^.*$\"\r",
+							"\t\t}\r",
+							"\t}\r",
+							"};\r",
+							"\r",
+							"pm.test('Validade Schema is valid', function() {\r",
+							"  pm.response.to.have.jsonSchema(schema);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/posts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string Created\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate new inserted content\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var idcompare = 101;\r",
+							"    pm.expect(jsonData.title).to.eql(pm.environment.get(\"title\"));\r",
+							"    pm.expect(jsonData.body).to.eql(pm.environment.get(\"body\"));\r",
+							"    pm.expect(jsonData.id).to.eql(idcompare);\r",
+							"\r",
+							"    pm.environment.unset(\"title\");\r",
+							"    pm.environment.unset(\"body\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate that header Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"const schema = {\r",
+							"\t\"properties\": {\r",
+							"\t\t\"userId\": {\r",
+							"\t\t\t\"$id\": \"#root/userId\", \r",
+							"\t\t\t\"title\": \"Userid\", \r",
+							"\t\t\t\"type\": \"integer\",\r",
+							"\t\t\t\"examples\": [\r",
+							"\t\t\t\t1\r",
+							"\t\t\t],\r",
+							"\t\t\t\"default\": 0\r",
+							"\t\t},\r",
+							"\t\t\"id\": {\r",
+							"\t\t\t\"$id\": \"#root/id\", \r",
+							"\t\t\t\"title\": \"Id\", \r",
+							"\t\t\t\"type\": \"integer\",\r",
+							"\t\t\t\"examples\": [\r",
+							"\t\t\t\t1\r",
+							"\t\t\t],\r",
+							"\t\t\t\"default\": 0\r",
+							"\t\t},\r",
+							"\t\t\"title\": {\r",
+							"\t\t\t\"$id\": \"#root/title\", \r",
+							"\t\t\t\"title\": \"Title\", \r",
+							"\t\t\t\"type\": \"string\",\r",
+							"\t\t\t\"default\": \"\",\r",
+							"\t\t\t\"examples\": [\r",
+							"\t\t\t\t\"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\"\r",
+							"\t\t\t],\r",
+							"\t\t\t\"pattern\": \"^.*$\"\r",
+							"\t\t},\r",
+							"\t\t\"body\": {\r",
+							"\t\t\t\"$id\": \"#root/body\", \r",
+							"\t\t\t\"title\": \"Body\", \r",
+							"\t\t\t\"type\": \"string\",\r",
+							"\t\t\t\"default\": \"\",\r",
+							"\t\t\t\"examples\": [\r",
+							"\t\t\t\t\"quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\"\r",
+							"\t\t\t],\r",
+							"\t\t\t\"pattern\": \"^.*$\"\r",
+							"\t\t}\r",
+							"\t}\r",
+							"};\r",
+							"\r",
+							"pm.test('Validate Schema is valid', function() {\r",
+							"  pm.response.to.have.jsonSchema(schema);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var random1 = Math.random().toString(36).substring(2)\r",
+							"var random2 = Math.random().toString(30).substring(3)\r",
+							"var title = \"Conteudo title \" + random1;\r",
+							"var body = \"Conteudo body \" + random2;\r",
+							"\r",
+							"pm.environment.set(\"title\",title);\r",
+							"pm.environment.set(\"body\",body);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 11,\r\n    \"title\": \"{{title}}\",\r\n    \"body\": \"{{body}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/posts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
